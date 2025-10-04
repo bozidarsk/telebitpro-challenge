@@ -1,6 +1,4 @@
-﻿// bin/Release/net9.0/telebitpro-challenge  0.66s user 0.02s system 23% cpu 2.870 total
-
-List<int> input;
+﻿List<int> input;
 
 do 
 {
@@ -45,7 +43,7 @@ static int CalculateTripCount(List<int> weights, int capacity)
 		int current = query.Max();
 
 		if (current > capacity)
-			return -1; // there is a sheep heavier than the maximum capacity
+			return -1; // there is a sheep heavier than the required capacity
 
 		weights.Remove(current);
 		total += current;

@@ -1,26 +1,66 @@
-﻿List<int> input;
+﻿List<int> input, weights;
+int sheepCount, tripCount;
 
-do 
+while (true) 
 {
-	input = ParseLine("Line 1: ");
+	while (true) 
+	{
+		input = ParseLine("Line 1: ");
 
-	if (input.Count != 2)
-		Console.WriteLine("First line must contain 2 integers.");
-} while (input.Count != 2);
+		if (input.Count != 2) 
+		{
+			Console.WriteLine("First line must contain 2 integers.");
+			continue;
+		}
 
-int sheepCount = input[0], tripCount = input[1];
+		break;
+	}
 
-do 
+	sheepCount = input[0];
+	tripCount = input[1];
+
+	if (sheepCount < 1 || sheepCount > 1000) 
+	{
+		Console.WriteLine("N must be >= 1 and <= 1000.");
+		continue;
+	}
+
+	if (tripCount < 1 || tripCount > 1000) 
+	{
+		Console.WriteLine("K must be >= 1 and <= 1000.");
+		continue;
+	}
+
+	break;
+}
+
+while (true) 
 {
-	input = ParseLine("Line 2: ");
+	while (true) 
+	{
+		input = ParseLine("Line 2: ");
 
-	if (input.Count != sheepCount)
-		Console.WriteLine($"Second line must contain {sheepCount} integers.");
-} while (input.Count != sheepCount);
+		if (input.Count != sheepCount) 
+		{
+			Console.WriteLine($"Second line must contain {sheepCount} integers.");
+			continue;
+		}
 
-List<int> weights = input;
+		break;
+	}
+
+	weights = input;
+
+	if (input.Any(x => x < 1 || x > 100000)) 
+	{
+		Console.WriteLine("Ai must be >= 1 and <= 100000.");
+		continue;
+	}
+
+	break;
+}
+
 int minCapacity;
-
 for (minCapacity = weights.Max(); CalculateTripCount(new(weights), minCapacity) != tripCount; minCapacity++);
 
 Console.WriteLine(minCapacity);
